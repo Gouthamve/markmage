@@ -1,5 +1,5 @@
 app:
-  respawn: no
+  respawn: yes
   env:  
    PORT: 3000
    HOST_URL: http://128.199.129.20:3000

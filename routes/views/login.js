@@ -9,7 +9,7 @@ exports = module.exports = function(req, res) {
 	var onFail = function(err) {
 		console.log("NOOOO, onFail");
 		console.log(err);
-		next();
+		return res.redirect('/login');
 	}
 
 	var view = new keystone.View(req, res),
