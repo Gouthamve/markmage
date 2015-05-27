@@ -16,6 +16,7 @@ exports = module.exports = function(app) {
 	
 	// Views
 	app.all('/', routes.views.index);
-	
+	app.all('/signup', routes.views.signup);
+	app.all('/login', routes.views.login);
 	
 };

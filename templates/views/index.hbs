@@ -5,6 +5,9 @@
 		<input type="file" name="image_upload">
 		<input type="submit">
 	</form>
+	{{#if image}}
+		<p><img src="http://localhost:4501/images/{{image.image.filename}}" style="width: 200px">: localhost:4501/images/{{image.image.filename}}</p>
+	{{/if}}
 	{{#if user}}
 		Your images
 		{{#each images}}
@@ -13,14 +16,7 @@
 			{{/if}}
 		{{/each}}
 	{{else}}
-		<p>Login to see your images</p>
-		<form action="" method="POST">
-			<input type="hidden" name="action" value="login">
-			<p>email</p>
-			<input type="email" name="email">
-			<p>Password</p>
-			<input type="password" name="password">
-			<input type="submit">
-		</form>
+		<a href="/login">Login</a>
+		<a href="/signup">Signup</a>
 	{{/if}}
 </div>

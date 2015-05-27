@@ -23,11 +23,11 @@ exports = module.exports = function(req, res) {
 	});
 
 	view.on('post', {action: 'upload.image'}, function(next) {
-		console.log(req.files)
-		if(req.user)
+		if(req.user) {
 			var newImage = new Image.model({
 				who: req.user._id
 			});
+		}
 		else
 			var newImage = new Image.model();
 		var updater = newImage.getUpdateHandler(req, res, {
@@ -36,11 +36,9 @@ exports = module.exports = function(req, res) {
 
 		updater.process(req.body, {
 			fields: 'image'
-		}, function(err) {
+		}, function(err, image) {
 			if(err)
 				console.log(err)
-			else
-				console.log("YAYA")
 			if(req.user) {
 				Image.model.find()
 					.where('who', req.user._id)
@@ -48,11 +46,12 @@ exports = module.exports = function(req, res) {
 						if(!images) {
 							return next();
 						} else {
-							locals.images = images;
+							locals.images = images.reverse();
 							return next();
 						}
 					})
 			} else {
+				locals.image = image;
 				return next();
 			}
 		})
@@ -60,6 +59,7 @@ exports = module.exports = function(req, res) {
 	});
 
 	view.on('init', function(next) {
+		if(req.method == "POST") return next();
 		if(req.user) {
 			Image.model.find()
 				.where('who', req.user._id)
@@ -67,7 +67,7 @@ exports = module.exports = function(req, res) {
 					if(!images) {
 						return next();
 					} else {
-						locals.images = images;
+						locals.images = images.reverse();
 						next();
 					}
 				})
