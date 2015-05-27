@@ -1,0 +1,26 @@
+{{!< default}}
+<div class="container">
+	<form action="" method="POST" enctype="multipart/form-data">
+		<input type="hidden" name="action" value="upload.image">
+		<input type="file" name="image_upload">
+		<input type="submit">
+	</form>
+	{{#if user}}
+		Your images
+		{{#each images}}
+			{{#if image.originalname}}
+				<p><img src="http://localhost:4501/images/{{image.filename}}" style="width: 200px">: localhost:4501/images/{{image.filename}}</p>
+			{{/if}}
+		{{/each}}
+	{{else}}
+		<p>Login to see your images</p>
+		<form action="" method="POST">
+			<input type="hidden" name="action" value="login">
+			<p>email</p>
+			<input type="email" name="email">
+			<p>Password</p>
+			<input type="password" name="password">
+			<input type="submit">
+		</form>
+	{{/if}}
+</div>
