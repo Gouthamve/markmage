@@ -6,13 +6,13 @@
 		<input type="submit">
 	</form>
 	{{#if image}}
-		<p><img src="http://localhost:4501/images/{{image.image.filename}}" style="width: 200px">: localhost:4501/images/{{image.image.filename}}</p>
+		<p><img src="{{host}}/images/{{image.image.filename}}" style="width: 200px">: {{host}}/images/{{image.image.filename}}</p>
 	{{/if}}
 	{{#if user}}
 		Your images
 		{{#each images}}
 			{{#if image.originalname}}
-				<p><img src="http://localhost:4501/images/{{image.filename}}" style="width: 200px">: localhost:4501/images/{{image.filename}}</p>
+				<p><img src="{{returnHost}}/images/{{image.filename}}" style="width: 200px">: {{returnHost}}/images/{{image.filename}}</p>
 			{{/if}}
 		{{/each}}
 	{{else}}

@@ -1,7 +1,8 @@
 app:
-  respawn: yes
-  env:
+  respawn: no
+  env:  
    PORT: 3000
+   HOST_URL: http://128.199.129.20:3000
   exec: node keystone
 
 setup:

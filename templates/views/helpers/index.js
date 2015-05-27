@@ -333,6 +333,10 @@ module.exports = function() {
 		}
 		return new hbs.SafeString(output);
 	};
+
+	_helpers.returnHost = function() {
+		return process.env.HOST_URL;
+	}
 	
 	return _helpers;
 };
