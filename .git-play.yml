@@ -1,0 +1,11 @@
+app:
+  respawn: yes
+  env:
+   PORT: 3000
+  exec: node keystone
+
+setup:
+  - npm install
+
+teardown:
+  - echo "The server is going down for maintanance..."
